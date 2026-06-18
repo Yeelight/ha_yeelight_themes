@@ -9,8 +9,8 @@
 
 ## Links
 
-Link to current release: <https://github.com/Yeelight/ha_yeelight_themes/releases/tag/v1.0.0>
-Link to successful HACS action (without the `ignore` key): <https://github.com/Yeelight/ha_yeelight_themes/actions/runs/27740610388>
+Link to current release: <https://github.com/Yeelight/ha_yeelight_themes/releases/tag/v1.0.1>
+Link to successful HACS action (without the `ignore` key): <https://github.com/Yeelight/ha_yeelight_themes/actions/runs/27744600672>
 Link to successful hassfest action (if integration): <not applicable: theme repository>
 
 <!-- tid:73253df5-5376-4e68-8c16-b234da6a2de3 -->

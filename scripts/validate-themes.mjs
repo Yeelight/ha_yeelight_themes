@@ -372,7 +372,7 @@ function assertHacsSubmissionDocs() {
   if (!body.includes("## Checklist") || !body.includes("## Links")) {
     fail("HACS PR body template must keep the upstream Checklist and Links sections.");
   }
-  if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("actions/runs/27740610388") || !body.includes("releases/tag/v1.0.0")) {
+  if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("actions/runs/27744600672") || !body.includes("releases/tag/v1.0.1")) {
     fail("HACS PR body template must include validation action and release links.");
   }
 

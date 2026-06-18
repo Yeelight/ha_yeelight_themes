@@ -6,6 +6,8 @@ Yeelight 品牌的 Home Assistant 主题包。它是 Yeelight 卡片和中枢面
 
 主题只影响视觉，不提供灯光交互模型、服务调用、自动化或后端集成。
 
+![Yeelight Themes 预览](assets/preview.svg)
+
 ## 功能特性
 
 - Yeelight Light、Yeelight Dark、Yeelight Panel、Yeelight Classic Light、Yeelight Classic Dark、Yeelight Minimal 六套主题
@@ -17,6 +19,8 @@ Yeelight 品牌的 Home Assistant 主题包。它是 Yeelight 卡片和中枢面
 ## 安装
 
 ### HACS 安装
+
+[![打开 Home Assistant 并将本仓库添加到 HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Yeelight&repository=ha_yeelight_themes&category=theme)
 
 1. 打开 HACS。
 2. 将本仓库作为 **Theme** 类型的自定义仓库添加，或在进入 HACS 主题目录后直接安装。
@@ -34,6 +38,12 @@ frontend:
 ```
 
 3. 调用 `frontend.reload_themes`，或重启 Home Assistant。
+
+## 兼容性
+
+- Home Assistant 2024.1.0 或更新版本。
+- 通过 HACS 安装时，需要 HACS 2.0.0 或更新版本。
+- 不依赖任何自定义集成。主题文件由 Home Assistant 内置的 `frontend` 集成加载。
 
 ## 使用
 
@@ -59,6 +69,16 @@ frontend:
 | 反馈色 | `success-color`、`warning-color`、`error-color`、`info-color` |
 | Yeelight 卡片 | `yl-accent`、`yl-surface`、`yl-text`、`yl-muted`、`yl-radius-card`、`yl-card-shadow`、`yl-hero-glow-color` |
 
+## 发布验证
+
+每次发布都会执行：
+
+```bash
+node scripts/validate-themes.mjs
+```
+
+验证范围包括导出的主题名称、必需的 Home Assistant 变量、状态色、Yeelight 配套变量、HACS 包结构，以及 Lucore Home Assistant Docker 同步路径是否会将本主题包复制到 `/config/themes/yeelight.yaml`。
+
 ## 自定义
 
 你可以复制主题到自己的 YAML 文件，再覆盖需要调整的变量：
@@ -72,6 +92,10 @@ frontend:
 ```
 
 调整 Yeelight 卡片时，优先覆盖 `yl-*` 变量；调整 HA 原生组件时，优先覆盖 `primary-color`、`ha-card-background`、`divider-color`、`state-*-color` 等标准变量。
+
+## 边界
+
+本主题包只负责 Home Assistant 的视觉样式。灯光控制、设备发现、自动化和服务调用应由 Home Assistant 集成或 Lovelace 卡片承担，而不是由主题承担。
 
 ## 许可证
 

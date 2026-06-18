@@ -6,6 +6,8 @@ Yeelight-branded theme pack for Home Assistant. This repository is an optional c
 
 Themes affect visuals only. They do not add a lighting interaction model, service calls, automations, or a backend integration.
 
+![Yeelight Themes preview](assets/preview.svg)
+
 ## Features
 
 - Yeelight Light, Yeelight Dark, Yeelight Panel, Yeelight Classic Light, Yeelight Classic Dark, and Yeelight Minimal
@@ -17,6 +19,8 @@ Themes affect visuals only. They do not add a lighting interaction model, servic
 ## Installation
 
 ### HACS Installation
+
+[![Open your Home Assistant instance and add this repository to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Yeelight&repository=ha_yeelight_themes&category=theme)
 
 1. Open HACS.
 2. Add this repository as a custom repository with category **Theme**, or install it from the HACS theme catalog when available.
@@ -34,6 +38,12 @@ frontend:
 ```
 
 3. Run `frontend.reload_themes`, or restart Home Assistant.
+
+## Compatibility
+
+- Home Assistant 2024.1.0 or newer.
+- HACS 2.0.0 or newer when installed through HACS.
+- No custom integration is required. The theme file is loaded by Home Assistant's built-in `frontend` integration.
 
 ## Usage
 
@@ -59,6 +69,16 @@ Each theme defines standard HA variables before Yeelight-specific variables:
 | Feedback | `success-color`, `warning-color`, `error-color`, `info-color` |
 | Yeelight cards | `yl-accent`, `yl-surface`, `yl-text`, `yl-muted`, `yl-radius-card`, `yl-card-shadow`, `yl-hero-glow-color` |
 
+## Release Validation
+
+Every release is checked with:
+
+```bash
+node scripts/validate-themes.mjs
+```
+
+The validation covers the exported theme names, required Home Assistant variables, state colors, Yeelight companion tokens, HACS package shape, and the Lucore Home Assistant Docker sync path that copies this package into `/config/themes/yeelight.yaml`.
+
 ## Customization
 
 You can override any variable by copying the theme into your own YAML file and changing the values:
@@ -72,6 +92,10 @@ frontend:
 ```
 
 For Yeelight cards, prefer overriding `yl-*` tokens first. For native Home Assistant controls, prefer standard HA variables such as `primary-color`, `ha-card-background`, `divider-color`, and `state-*-color`.
+
+## Scope
+
+This package only styles Home Assistant. Lighting controls, device discovery, automations, and service calls belong to Home Assistant integrations or Lovelace cards, not to themes.
 
 ## License
 

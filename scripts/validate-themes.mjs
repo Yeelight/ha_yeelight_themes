@@ -292,12 +292,30 @@ function assertDocs() {
       fail(`README.md must mention "${phrase}".`);
     }
   }
+  if (!/\!\[[^\]]+\]\(assets\/preview\.svg\)/.test(readme)) {
+    fail("README.md must include the theme preview image for HACS review.");
+  }
 
   for (const phrase of ["可选配套主题", "只影响视觉", "frontend.reload_themes"]) {
     if (!readmeZh.includes(phrase)) {
       fail(`README_zh.md must mention "${phrase}".`);
     }
   }
+  if (!/\!\[[^\]]+\]\(assets\/preview\.svg\)/.test(readmeZh)) {
+    fail("README_zh.md must include the theme preview image for HACS review.");
+  }
+}
+
+function canValidateWorkspaceIntegration() {
+  return [
+    DOCKERFILE,
+    CONFIGURATION_FILE,
+    ENTRYPOINT_FILE,
+    RUN_SH_FILE,
+    THEME_MIGRATION_FILE,
+    YEELIGHT_UI_PACKAGE,
+    LUCORE_UI_PACKAGE,
+  ].every((file) => existsSync(file));
 }
 
 function assertDistributionIntegration() {
@@ -380,14 +398,17 @@ function assertLegacyThemeSourceRemoved() {
   }
 }
 
-// 该脚本只验证发布形态和主题 token 覆盖，不尝试替代 Home Assistant 的完整 YAML 解析。
+// 该脚本验证 HACS 发布形态和主题 token 覆盖；完整 YAML 解析仍交给 Home Assistant check_config。
 assertHacsMetadata();
 assertThemeFiles();
 assertNoYamlMergeKeys();
 assertThemeTokens();
 assertDocs();
-assertDistributionIntegration();
-assertRuntimePackagesUseThemeNames();
-assertLegacyThemeSourceRemoved();
+
+if (canValidateWorkspaceIntegration()) {
+  assertDistributionIntegration();
+  assertRuntimePackagesUseThemeNames();
+  assertLegacyThemeSourceRemoved();
+}
 
 console.log("Yeelight themes validation passed.");

@@ -2,86 +2,76 @@
 
 [English](README.md) | [中文](README_zh.md)
 
-Yeelight-branded theme pack for Home Assistant.
+Yeelight-branded theme pack for Home Assistant. This repository is an optional companion for Yeelight cards and dashboards: it keeps the native Home Assistant UI, built-in controls, and Yeelight card package on the same visual system.
+
+Themes affect visuals only. They do not add a lighting interaction model, service calls, automations, or a backend integration.
 
 ## Features
 
-- ✅ Dark theme (Yeelight Dark)
-- ✅ Light theme (Yeelight Light)
-- ✅ Control Panel theme (Yeelight Panel)
-- ✅ Yeelight brand visual style
-- ✅ No integration dependencies
+- Yeelight Light, Yeelight Dark, Yeelight Panel, Yeelight Classic Light, Yeelight Classic Dark, and Yeelight Minimal
+- Native Home Assistant variables for cards, dialogs, buttons, selects, inputs, switches, sliders, and sidebar
+- State colors for common HA domains including lights, switches, fans, covers, media players, locks, alarms, and updates
+- `yl-*` companion tokens for Yeelight cards
+- No integration or JavaScript dependency
 
 ## Installation
 
-### HACS Installation (Recommended)
+### HACS Installation
 
-1. Open HACS
-2. Search for "Yeelight Themes"
-3. Click Install
-4. Restart Home Assistant
+1. Open HACS.
+2. Add this repository as a custom repository with category **Theme**, or install it from the HACS theme catalog when available.
+3. Install **Yeelight Themes**.
+4. Run the Home Assistant service `frontend.reload_themes`, or restart Home Assistant.
 
 ### Manual Installation
 
-1. Download the latest release
-2. Copy theme files to `config/themes/`
-3. Restart Home Assistant
+1. Copy `themes/yeelight.yaml` to `config/themes/yeelight.yaml`.
+2. Make sure Home Assistant loads theme files:
+
+```yaml
+frontend:
+  themes: !include_dir_merge_named themes
+```
+
+3. Run `frontend.reload_themes`, or restart Home Assistant.
 
 ## Usage
 
-1. Go to Settings → Appearance
+1. Go to Settings → Appearance.
 2. Select theme:
-   - **Yeelight Dark**: Dark theme, suitable for nighttime
-   - **Yeelight Light**: Light theme, suitable for daytime
-   - **Yeelight Panel**: Control panel theme, suitable for wall-mounted displays
+   - **Yeelight Light**: warm daylight interface for regular dashboards.
+   - **Yeelight Dark**: dark interface for night use and wall-mounted displays.
+   - **Yeelight Panel**: high-contrast dark theme adapted from the older Yeelight wall-panel theme.
+   - **Yeelight Classic Light**: blue light theme adapted from the older Lucore light theme with better native HA control coverage.
+   - **Yeelight Classic Dark**: blue dark theme adapted from the older Lucore dark theme with better native HA control coverage.
+   - **Yeelight Minimal**: lower-contrast theme with Home Assistant light/dark mode support.
 
 ## Theme Variables
 
-### Yeelight Dark
+Each theme defines standard HA variables before Yeelight-specific variables:
 
-| Variable | Value | Description |
-| --- | --- | --- |
-| `primary-color` | `#FFC56D` | Primary color (warm gold) |
-| `accent-color` | `#FF9F43` | Accent color |
-| `card-background-color` | `#1A1B1E` | Card background |
-| `primary-background-color` | `#101114` | Main background |
-| `primary-text-color` | `#E8E8E8` | Primary text color |
-| `yl-hero-glow-color` | `rgba(255,197,109,0.15)` | Hero glow effect |
-
-### Yeelight Light
-
-| Variable | Value | Description |
-| --- | --- | --- |
-| `primary-color` | `#FFB84D` | Primary color (warm orange) |
-| `accent-color` | `#FF9F43` | Accent color |
-| `card-background-color` | `#FFFFFF` | Card background |
-| `primary-background-color` | `#FFF8EF` | Main background |
-| `primary-text-color` | `#333333` | Primary text color |
-| `yl-hero-glow-color` | `rgba(255,184,77,0.1)` | Hero glow effect |
-
-### Yeelight Panel
-
-| Variable | Value | Description |
-| --- | --- | --- |
-| `primary-color` | `#FFC56D` | Primary color |
-| `accent-color` | `#FF9F43` | Accent color |
-| `card-background-color` | `#1A1B1E` | Card background |
-| `primary-background-color` | `#101114` | Main background |
-| `primary-text-color` | `#E8E8E8` | Primary text color |
-| `body-font-size` | `16px` | Body font size |
-| `headline-font-size` | `24px` | Headline font size |
+| Group | Examples |
+| --- | --- |
+| Core palette | `primary-color`, `accent-color`, `dark-primary-color`, `light-primary-color` |
+| Surfaces | `primary-background-color`, `secondary-background-color`, `card-background-color`, `ha-card-background` |
+| Native controls | `mdc-theme-primary`, `input-fill-color`, `switch-checked-color`, `slider-color`, `paper-item-icon-color` |
+| Entity states | `state-light-active-color`, `state-switch-active-color`, `state-lock-locked-color`, `state-alarm_control_panel-armed_away-color` |
+| Feedback | `success-color`, `warning-color`, `error-color`, `info-color` |
+| Yeelight cards | `yl-accent`, `yl-surface`, `yl-text`, `yl-muted`, `yl-radius-card`, `yl-card-shadow`, `yl-hero-glow-color` |
 
 ## Customization
 
-You can customize themes by overriding CSS variables:
+You can override any variable by copying the theme into your own YAML file and changing the values:
 
 ```yaml
-# In configuration.yaml
 frontend:
   themes:
-    yeelight_dark:
-      primary-color: "#FF0000"  # Custom primary color
+    My Yeelight Light:
+      primary-color: "#FFB84D"
+      accent-color: "#2B8CFF"
 ```
+
+For Yeelight cards, prefer overriding `yl-*` tokens first. For native Home Assistant controls, prefer standard HA variables such as `primary-color`, `ha-card-background`, `divider-color`, and `state-*-color`.
 
 ## License
 

@@ -2,9 +2,8 @@
   "name": "Yeelight Themes",
   "homeassistant": "2024.1.0",
   "render_readme": true,
-  "zip_release": true,
-  "filename": "yeelight_themes.zip",
+  "filename": "yeelight.yaml",
   "country": ["CN", "US", "EU"],
-  "content_in_root": true,
+  "content_in_root": false,
   "hacs": "2.0.0"
 }

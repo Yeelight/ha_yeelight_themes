@@ -1,0 +1,14 @@
+{
+  "name": "@yeelight/ha-yeelight-themes",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Maintenance scripts for the Yeelight Home Assistant theme package.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-themes.mjs",
+    "screenshots:ha": "node scripts/capture-ha-screenshots.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.61.0"
+  }
+}

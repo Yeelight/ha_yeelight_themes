@@ -1,0 +1,108 @@
+{
+  "capturedAt": "2026-06-18T07:25:05.587Z",
+  "haUrl": "http://localhost:18124",
+  "themes": [
+    {
+      "theme": "Yeelight Light",
+      "activeTheme": "Yeelight Light",
+      "selectedTheme": {
+        "theme": "Yeelight Light"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#FFB84D",
+        "primaryBackgroundColor": "#F7F3EC",
+        "cardBackgroundColor": "#FFFFFF",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#FFB84D"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-light.png"
+    },
+    {
+      "theme": "Yeelight Dark",
+      "activeTheme": "Yeelight Dark",
+      "selectedTheme": {
+        "theme": "Yeelight Dark"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#FFC56D",
+        "primaryBackgroundColor": "#111318",
+        "cardBackgroundColor": "#1B1E25",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#FFC56D"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-dark.png"
+    },
+    {
+      "theme": "Yeelight Panel",
+      "activeTheme": "Yeelight Panel",
+      "selectedTheme": {
+        "theme": "Yeelight Panel"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#FFB84D",
+        "primaryBackgroundColor": "#0F1115",
+        "cardBackgroundColor": "#1C1F26",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#FFC56D"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-panel.png"
+    },
+    {
+      "theme": "Yeelight Classic Light",
+      "activeTheme": "Yeelight Classic Light",
+      "selectedTheme": {
+        "theme": "Yeelight Classic Light"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#4A90E2",
+        "primaryBackgroundColor": "#F5F7FA",
+        "cardBackgroundColor": "#FFFFFF",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#4A90E2"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-classic-light.png"
+    },
+    {
+      "theme": "Yeelight Classic Dark",
+      "activeTheme": "Yeelight Classic Dark",
+      "selectedTheme": {
+        "theme": "Yeelight Classic Dark"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#5B9BD5",
+        "primaryBackgroundColor": "#1A1D23",
+        "cardBackgroundColor": "#23262D",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#5B9BD5"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-classic-dark.png"
+    },
+    {
+      "theme": "Yeelight Minimal",
+      "activeTheme": "Yeelight Minimal",
+      "selectedTheme": {
+        "theme": "Yeelight Minimal"
+      },
+      "hasTheme": true,
+      "variables": {
+        "primaryColor": "#FFB84D",
+        "primaryBackgroundColor": "#FAFAF8",
+        "cardBackgroundColor": "#FFFFFF",
+        "haCardBorderRadius": "8px",
+        "ylPrimary": "#FFB84D"
+      },
+      "card": null,
+      "screenshot": "assets/screenshots/yeelight-minimal.png"
+    }
+  ]
+}

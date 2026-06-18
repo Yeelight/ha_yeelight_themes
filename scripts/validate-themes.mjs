@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -11,6 +11,10 @@ const THEME_FILE = join(THEMES_DIR, "yeelight.yaml");
 const HACS_FILE = join(ROOT, "hacs.json");
 const README_FILE = join(ROOT, "README.md");
 const README_ZH_FILE = join(ROOT, "README_zh.md");
+const SCREENSHOTS_DIR = join(ROOT, "assets/screenshots");
+const SCREENSHOT_REPORT_FILE = join(SCREENSHOTS_DIR, "ha-theme-screenshots.json");
+const HACS_PR_BODY_FILE = join(ROOT, "docs/hacs-default-pr-body.md");
+const HACS_SUBMISSION_DOC_FILE = join(ROOT, "docs/hacs-default-submission.md");
 const DOCKERFILE = join(WORKSPACE_ROOT, "Dockerfile");
 const CONFIGURATION_FILE = join(WORKSPACE_ROOT, "config/configuration.yaml");
 const ENTRYPOINT_FILE = join(WORKSPACE_ROOT, "scripts/docker-entrypoint.sh");
@@ -27,6 +31,14 @@ const REQUIRED_THEMES = [
   "Yeelight Classic Light",
   "Yeelight Classic Dark",
   "Yeelight Minimal",
+];
+const REQUIRED_SCREENSHOTS = [
+  ["Yeelight Light", "assets/screenshots/yeelight-light.png"],
+  ["Yeelight Dark", "assets/screenshots/yeelight-dark.png"],
+  ["Yeelight Panel", "assets/screenshots/yeelight-panel.png"],
+  ["Yeelight Classic Light", "assets/screenshots/yeelight-classic-light.png"],
+  ["Yeelight Classic Dark", "assets/screenshots/yeelight-classic-dark.png"],
+  ["Yeelight Minimal", "assets/screenshots/yeelight-minimal.png"],
 ];
 const REQUIRED_TOKENS = [
   "primary-color",
@@ -295,6 +307,9 @@ function assertDocs() {
   if (!/\!\[[^\]]+\]\(assets\/preview\.svg\)/.test(readme)) {
     fail("README.md must include the theme preview image for HACS review.");
   }
+  if (!readme.includes("Real Home Assistant screenshots")) {
+    fail("README.md must include real Home Assistant screenshots.");
+  }
 
   for (const phrase of ["可选配套主题", "只影响视觉", "frontend.reload_themes"]) {
     if (!readmeZh.includes(phrase)) {
@@ -303,6 +318,68 @@ function assertDocs() {
   }
   if (!/\!\[[^\]]+\]\(assets\/preview\.svg\)/.test(readmeZh)) {
     fail("README_zh.md must include the theme preview image for HACS review.");
+  }
+  if (!readmeZh.includes("真实 Home Assistant 截图")) {
+    fail("README_zh.md must include real Home Assistant screenshots.");
+  }
+
+  for (const [_theme, screenshot] of REQUIRED_SCREENSHOTS) {
+    if (!readme.includes(screenshot) || !readmeZh.includes(screenshot)) {
+      fail(`README files must reference ${screenshot}.`);
+    }
+  }
+}
+
+function assertScreenshotEvidence() {
+  const report = JSON.parse(readText(SCREENSHOT_REPORT_FILE));
+  const capturedThemes = new Map((report.themes || []).map((theme) => [theme.theme, theme]));
+
+  for (const [theme, screenshot] of REQUIRED_SCREENSHOTS) {
+    const file = join(ROOT, screenshot);
+    if (!existsSync(file)) {
+      fail(`Missing real Home Assistant screenshot for ${theme}: ${screenshot}`);
+    }
+    const size = statSync(file).size;
+    if (size < 20_000) {
+      fail(`Screenshot for ${theme} is unexpectedly small: ${screenshot}`);
+    }
+
+    const entry = capturedThemes.get(theme);
+    if (!entry) {
+      fail(`Screenshot report must include ${theme}.`);
+    }
+    if (entry.screenshot !== screenshot) {
+      fail(`Screenshot report path mismatch for ${theme}: ${entry.screenshot}`);
+    }
+    if (entry.activeTheme !== theme || entry.selectedTheme?.theme !== theme) {
+      fail(`Screenshot report must confirm ${theme} was the active HA theme.`);
+    }
+    for (const token of ["primaryColor", "primaryBackgroundColor", "cardBackgroundColor", "haCardBorderRadius", "ylPrimary"]) {
+      if (!entry.variables?.[token]) {
+        fail(`Screenshot report for ${theme} is missing CSS token sample: ${token}`);
+      }
+    }
+  }
+}
+
+function assertHacsSubmissionDocs() {
+  const body = readText(HACS_PR_BODY_FILE);
+  const docs = readText(HACS_SUBMISSION_DOC_FILE);
+
+  if (body.includes("\\n")) {
+    fail("HACS PR body template contains literal escaped newline text.");
+  }
+  if (!body.includes("## Checklist") || !body.includes("## Links")) {
+    fail("HACS PR body template must keep the upstream Checklist and Links sections.");
+  }
+  if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("actions/runs/27740610388") || !body.includes("releases/tag/v1.0.0")) {
+    fail("HACS PR body template must include validation action and release links.");
+  }
+
+  for (const phrase of ["New default repository", "--body-file", "theme", "hacs/default"]) {
+    if (!docs.includes(phrase)) {
+      fail(`HACS submission notes must mention "${phrase}".`);
+    }
   }
 }
 
@@ -404,6 +481,8 @@ assertThemeFiles();
 assertNoYamlMergeKeys();
 assertThemeTokens();
 assertDocs();
+assertScreenshotEvidence();
+assertHacsSubmissionDocs();
 
 if (canValidateWorkspaceIntegration()) {
   assertDistributionIntegration();

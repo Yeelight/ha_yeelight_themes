@@ -6,7 +6,21 @@ Yeelight-branded theme pack for Home Assistant. This repository is an optional c
 
 Themes affect visuals only. They do not add a lighting interaction model, service calls, automations, or a backend integration.
 
-![Yeelight Themes preview](assets/preview.svg)
+## Real Home Assistant screenshots
+
+These screenshots are captured from a real Home Assistant instance after selecting each theme through the Home Assistant frontend user preference API.
+
+| Yeelight Light | Yeelight Dark | Yeelight Panel |
+| --- | --- | --- |
+| ![Yeelight Light Home Assistant screenshot](assets/screenshots/yeelight-light.png) | ![Yeelight Dark Home Assistant screenshot](assets/screenshots/yeelight-dark.png) | ![Yeelight Panel Home Assistant screenshot](assets/screenshots/yeelight-panel.png) |
+
+| Yeelight Classic Light | Yeelight Classic Dark | Yeelight Minimal |
+| --- | --- | --- |
+| ![Yeelight Classic Light Home Assistant screenshot](assets/screenshots/yeelight-classic-light.png) | ![Yeelight Classic Dark Home Assistant screenshot](assets/screenshots/yeelight-classic-dark.png) | ![Yeelight Minimal Home Assistant screenshot](assets/screenshots/yeelight-minimal.png) |
+
+## Theme overview
+
+![Yeelight Themes overview](assets/preview.svg)
 
 ## Features
 
@@ -74,10 +88,18 @@ Each theme defines standard HA variables before Yeelight-specific variables:
 Every release is checked with:
 
 ```bash
-node scripts/validate-themes.mjs
+npm run validate
 ```
 
-The validation covers the exported theme names, required Home Assistant variables, state colors, Yeelight companion tokens, HACS package shape, and the Lucore Home Assistant Docker sync path that copies this package into `/config/themes/yeelight.yaml`.
+The validation covers the exported theme names, required Home Assistant variables, state colors, Yeelight companion tokens, real screenshot evidence, HACS package shape, HACS default-store PR body hygiene, and the Lucore Home Assistant Docker sync path that copies this package into `/config/themes/yeelight.yaml`.
+
+To refresh screenshots against a local Home Assistant instance:
+
+```bash
+HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run screenshots:ha
+```
+
+The screenshot script saves each theme through Home Assistant's `frontend/set_user_data` API, reloads the dashboard, checks the active theme and CSS variables, and writes `assets/screenshots/ha-theme-screenshots.json`.
 
 ## Customization
 

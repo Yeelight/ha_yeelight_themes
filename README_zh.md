@@ -6,7 +6,21 @@ Yeelight 品牌的 Home Assistant 主题包。它是 Yeelight 卡片和中枢面
 
 主题只影响视觉，不提供灯光交互模型、服务调用、自动化或后端集成。
 
-![Yeelight Themes 预览](assets/preview.svg)
+## 真实 Home Assistant 截图
+
+以下截图来自真实 Home Assistant 实例，脚本会通过 Home Assistant 前端用户偏好 API 逐一选择主题后截图。
+
+| Yeelight Light | Yeelight Dark | Yeelight Panel |
+| --- | --- | --- |
+| ![Yeelight Light Home Assistant 截图](assets/screenshots/yeelight-light.png) | ![Yeelight Dark Home Assistant 截图](assets/screenshots/yeelight-dark.png) | ![Yeelight Panel Home Assistant 截图](assets/screenshots/yeelight-panel.png) |
+
+| Yeelight Classic Light | Yeelight Classic Dark | Yeelight Minimal |
+| --- | --- | --- |
+| ![Yeelight Classic Light Home Assistant 截图](assets/screenshots/yeelight-classic-light.png) | ![Yeelight Classic Dark Home Assistant 截图](assets/screenshots/yeelight-classic-dark.png) | ![Yeelight Minimal Home Assistant 截图](assets/screenshots/yeelight-minimal.png) |
+
+## 主题总览
+
+![Yeelight Themes 总览](assets/preview.svg)
 
 ## 功能特性
 
@@ -74,10 +88,18 @@ frontend:
 每次发布都会执行：
 
 ```bash
-node scripts/validate-themes.mjs
+npm run validate
 ```
 
-验证范围包括导出的主题名称、必需的 Home Assistant 变量、状态色、Yeelight 配套变量、HACS 包结构，以及 Lucore Home Assistant Docker 同步路径是否会将本主题包复制到 `/config/themes/yeelight.yaml`。
+验证范围包括导出的主题名称、必需的 Home Assistant 变量、状态色、Yeelight 配套变量、真实截图证据、HACS 包结构、HACS default-store PR 正文格式，以及 Lucore Home Assistant Docker 同步路径是否会将本主题包复制到 `/config/themes/yeelight.yaml`。
+
+如需针对本地 Home Assistant 重新生成截图：
+
+```bash
+HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run screenshots:ha
+```
+
+截图脚本会通过 Home Assistant 的 `frontend/set_user_data` API 保存主题偏好，刷新仪表盘，检查当前主题和 CSS 变量，并写入 `assets/screenshots/ha-theme-screenshots.json`。
 
 ## 自定义
 

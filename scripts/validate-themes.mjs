@@ -375,6 +375,12 @@ function assertHacsSubmissionDocs() {
   if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("actions/runs/27744600672") || !body.includes("releases/tag/v1.0.1")) {
     fail("HACS PR body template must include validation action and release links.");
   }
+  if (!body.includes("- [ ] (For integrations only) I've added the [hassfest action]")) {
+    fail("HACS PR body template must leave the integration-only hassfest checklist item unchecked for a theme repository.");
+  }
+  if (!body.includes("Link to successful hassfest action (if integration): <>")) {
+    fail("HACS PR body template must leave the integration-only hassfest link empty for a theme repository.");
+  }
 
   for (const phrase of ["New default repository", "--body-file", "theme", "hacs/default"]) {
     if (!docs.includes(phrase)) {

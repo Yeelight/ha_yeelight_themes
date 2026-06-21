@@ -78,7 +78,7 @@ frontend:
 | --- | --- |
 | 核心色 | `primary-color`、`accent-color`、`dark-primary-color`、`light-primary-color` |
 | 界面表面 | `primary-background-color`、`secondary-background-color`、`card-background-color`、`ha-card-background` |
-| 原生控件 | `mdc-theme-primary`、`input-fill-color`、`switch-checked-color`、`slider-color`、`paper-item-icon-color` |
+| 原生控件 | `ha-color-form-background`、`wa-color-surface-raised`、`mdc-select-fill-color`、`md-filled-select-text-field-container-color`、`input-fill-color` |
 | 实体状态 | `state-light-active-color`、`state-switch-active-color`、`state-lock-locked-color`、`state-alarm_control_panel-armed_away-color` |
 | 反馈色 | `success-color`、`warning-color`、`error-color`、`info-color` |
 | Yeelight 卡片 | `yl-accent`、`yl-surface`、`yl-text`、`yl-muted`、`yl-radius-card`、`yl-card-shadow`、`yl-hero-glow-color` |
@@ -100,6 +100,14 @@ HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run 
 ```
 
 截图脚本会通过 Home Assistant 的 `frontend/set_user_data` API 保存主题偏好，刷新仪表盘，检查当前主题和 CSS 变量，并写入 `assets/screenshots/ha-theme-screenshots.json`。
+
+如需验证用户首选项页的 HA 原生控件：
+
+```bash
+HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run validate:ha-controls
+```
+
+原生控件验证会将 `themes/yeelight.yaml` 同步到本地 HA 运行时主题文件，调用 `frontend.reload_themes`，逐个应用 Yeelight 深色主题用例，包括 `Yeelight Minimal` 的 `dark: true` 模式，截取 `/profile/general`，并在 `assets/screenshots/ha-native-controls.json` 中记录 select/dropdown 表单控件的对比度。
 
 ## 自定义
 

@@ -1,0 +1,517 @@
+{
+  "capturedAt": "2026-06-21T04:49:47.302Z",
+  "haUrl": "http://localhost:18124",
+  "profilePath": "/profile/general",
+  "themes": [
+    {
+      "theme": "Yeelight Dark",
+      "url": "http://localhost:18124/profile/general",
+      "activeTheme": "Yeelight Dark",
+      "selectedTheme": {
+        "theme": "Yeelight Dark"
+      },
+      "counts": {
+        "select": 7,
+        "pickerField": 8,
+        "dropdown": 7,
+        "dropdownItem": 62
+      },
+      "document": {
+        "tag": "html",
+        "text": "Profile – Home Assistantbody{font-family:Roboto,Noto,sans-serif;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing",
+        "color": "rgb(247, 242, 234)",
+        "backgroundColor": "rgb(17, 19, 24)",
+        "borderColor": "rgb(247, 242, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E25",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F7F2EA",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1B1E25",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#F7F2EA",
+          "--wa-color-text-quiet": "#B7B0A6",
+          "--mdc-select-fill-color": "#1B1E25",
+          "--mdc-select-ink-color": "#F7F2EA",
+          "--md-filled-select-text-field-container-color": "#1B1E25",
+          "--md-filled-select-text-field-input-text-color": "#F7F2EA"
+        }
+      },
+      "select": {
+        "tag": "ha-select",
+        "text": "",
+        "color": "rgb(247, 242, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(247, 242, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E25",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F7F2EA",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1B1E25",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#F7F2EA",
+          "--wa-color-text-quiet": "#B7B0A6",
+          "--mdc-select-fill-color": "#1B1E25",
+          "--mdc-select-ink-color": "#F7F2EA",
+          "--md-filled-select-text-field-container-color": "#1B1E25",
+          "--md-filled-select-text-field-input-text-color": "#F7F2EA"
+        }
+      },
+      "pickerField": {
+        "tag": "ha-picker-field",
+        "text": "",
+        "color": "rgb(247, 242, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(247, 242, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E25",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F7F2EA",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1B1E25",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#F7F2EA",
+          "--wa-color-text-quiet": "#B7B0A6",
+          "--mdc-select-fill-color": "#1B1E25",
+          "--mdc-select-ink-color": "#F7F2EA",
+          "--md-filled-select-text-field-container-color": "#1B1E25",
+          "--md-filled-select-text-field-input-text-color": "#F7F2EA"
+        }
+      },
+      "dropdown": {
+        "tag": "ha-dropdown",
+        "text": "Use default theme        Home Assistant        Catppuccin Auto Latte Frappe        Catppuccin Auto Latte Macchiato      ",
+        "color": "rgb(247, 242, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(247, 242, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E25",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F7F2EA",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1B1E25",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#F7F2EA",
+          "--wa-color-text-quiet": "#B7B0A6",
+          "--mdc-select-fill-color": "#1B1E25",
+          "--mdc-select-ink-color": "#F7F2EA",
+          "--md-filled-select-text-field-container-color": "#1B1E25",
+          "--md-filled-select-text-field-input-text-color": "#F7F2EA"
+        }
+      },
+      "dropdownItem": {
+        "tag": "ha-dropdown-item",
+        "text": "Use default theme",
+        "color": "rgb(247, 242, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(247, 242, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E25",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F7F2EA",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1B1E25",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#F7F2EA",
+          "--wa-color-text-quiet": "#B7B0A6",
+          "--mdc-select-fill-color": "#1B1E25",
+          "--mdc-select-ink-color": "#F7F2EA",
+          "--md-filled-select-text-field-container-color": "#1B1E25",
+          "--md-filled-select-text-field-input-text-color": "#F7F2EA"
+        }
+      },
+      "contrast": {
+        "document:--ha-color-form-background/--ha-color-on-neutral-normal": 14.96695643461912,
+        "document:--wa-color-surface-raised/--wa-color-text-normal": 14.96695643461912,
+        "document:--wa-color-surface-raised/--wa-color-text-quiet": 7.7633224574395605,
+        "select:--mdc-select-fill-color/--mdc-select-ink-color": 14.96695643461912,
+        "select:--md-filled-select-text-field-container-color/--md-filled-select-text-field-input-text-color": 14.96695643461912
+      },
+      "screenshot": "assets/screenshots/native-controls-yeelight-dark.png"
+    },
+    {
+      "theme": "Yeelight Panel",
+      "url": "http://localhost:18124/profile/general",
+      "activeTheme": "Yeelight Panel",
+      "selectedTheme": {
+        "theme": "Yeelight Panel"
+      },
+      "counts": {
+        "select": 7,
+        "pickerField": 8,
+        "dropdown": 7,
+        "dropdownItem": 62
+      },
+      "document": {
+        "tag": "html",
+        "text": "Profile – Home Assistantbody{font-family:Roboto,Noto,sans-serif;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(15, 17, 21)",
+        "borderColor": "rgb(255, 255, 255)",
+        "vars": {
+          "--ha-color-form-background": "#1C1F26",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#FFFFFF",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1C1F26",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#FFFFFF",
+          "--wa-color-text-quiet": "#D7D0C5",
+          "--mdc-select-fill-color": "#1C1F26",
+          "--mdc-select-ink-color": "#FFFFFF",
+          "--md-filled-select-text-field-container-color": "#1C1F26",
+          "--md-filled-select-text-field-input-text-color": "#FFFFFF"
+        }
+      },
+      "select": {
+        "tag": "ha-select",
+        "text": "",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(255, 255, 255)",
+        "vars": {
+          "--ha-color-form-background": "#1C1F26",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#FFFFFF",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1C1F26",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#FFFFFF",
+          "--wa-color-text-quiet": "#D7D0C5",
+          "--mdc-select-fill-color": "#1C1F26",
+          "--mdc-select-ink-color": "#FFFFFF",
+          "--md-filled-select-text-field-container-color": "#1C1F26",
+          "--md-filled-select-text-field-input-text-color": "#FFFFFF"
+        }
+      },
+      "pickerField": {
+        "tag": "ha-picker-field",
+        "text": "",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(255, 255, 255)",
+        "vars": {
+          "--ha-color-form-background": "#1C1F26",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#FFFFFF",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1C1F26",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#FFFFFF",
+          "--wa-color-text-quiet": "#D7D0C5",
+          "--mdc-select-fill-color": "#1C1F26",
+          "--mdc-select-ink-color": "#FFFFFF",
+          "--md-filled-select-text-field-container-color": "#1C1F26",
+          "--md-filled-select-text-field-input-text-color": "#FFFFFF"
+        }
+      },
+      "dropdown": {
+        "tag": "ha-dropdown",
+        "text": "Use default theme        Home Assistant        Catppuccin Auto Latte Frappe        Catppuccin Auto Latte Macchiato      ",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(255, 255, 255)",
+        "vars": {
+          "--ha-color-form-background": "#1C1F26",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#FFFFFF",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1C1F26",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#FFFFFF",
+          "--wa-color-text-quiet": "#D7D0C5",
+          "--mdc-select-fill-color": "#1C1F26",
+          "--mdc-select-ink-color": "#FFFFFF",
+          "--md-filled-select-text-field-container-color": "#1C1F26",
+          "--md-filled-select-text-field-input-text-color": "#FFFFFF"
+        }
+      },
+      "dropdownItem": {
+        "tag": "ha-dropdown-item",
+        "text": "Use default theme",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(255, 255, 255)",
+        "vars": {
+          "--ha-color-form-background": "#1C1F26",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#FFFFFF",
+          "--ha-color-border-neutral-loud": "#3A3F49",
+          "--wa-color-surface-raised": "#1C1F26",
+          "--wa-color-surface-border": "#3A3F49",
+          "--wa-color-text-normal": "#FFFFFF",
+          "--wa-color-text-quiet": "#D7D0C5",
+          "--mdc-select-fill-color": "#1C1F26",
+          "--mdc-select-ink-color": "#FFFFFF",
+          "--md-filled-select-text-field-container-color": "#1C1F26",
+          "--md-filled-select-text-field-input-text-color": "#FFFFFF"
+        }
+      },
+      "contrast": {
+        "document:--ha-color-form-background/--ha-color-on-neutral-normal": 16.49182723001865,
+        "document:--wa-color-surface-raised/--wa-color-text-normal": 16.49182723001865,
+        "document:--wa-color-surface-raised/--wa-color-text-quiet": 10.77309623211165,
+        "select:--mdc-select-fill-color/--mdc-select-ink-color": 16.49182723001865,
+        "select:--md-filled-select-text-field-container-color/--md-filled-select-text-field-input-text-color": 16.49182723001865
+      },
+      "screenshot": "assets/screenshots/native-controls-yeelight-panel.png"
+    },
+    {
+      "theme": "Yeelight Classic Dark",
+      "url": "http://localhost:18124/profile/general",
+      "activeTheme": "Yeelight Classic Dark",
+      "selectedTheme": {
+        "theme": "Yeelight Classic Dark"
+      },
+      "counts": {
+        "select": 7,
+        "pickerField": 8,
+        "dropdown": 7,
+        "dropdownItem": 62
+      },
+      "document": {
+        "tag": "html",
+        "text": "Profile – Home Assistantbody{font-family:Roboto,Noto,sans-serif;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing",
+        "color": "rgb(232, 234, 237)",
+        "backgroundColor": "rgb(26, 29, 35)",
+        "borderColor": "rgb(232, 234, 237)",
+        "vars": {
+          "--ha-color-form-background": "#23262D",
+          "--ha-color-form-background-disabled": "#1D2026",
+          "--ha-color-on-neutral-normal": "#E8EAED",
+          "--ha-color-border-neutral-loud": "#3A404A",
+          "--wa-color-surface-raised": "#23262D",
+          "--wa-color-surface-border": "#3A404A",
+          "--wa-color-text-normal": "#E8EAED",
+          "--wa-color-text-quiet": "#A7AFB8",
+          "--mdc-select-fill-color": "#23262D",
+          "--mdc-select-ink-color": "#E8EAED",
+          "--md-filled-select-text-field-container-color": "#23262D",
+          "--md-filled-select-text-field-input-text-color": "#E8EAED"
+        }
+      },
+      "select": {
+        "tag": "ha-select",
+        "text": "",
+        "color": "rgb(232, 234, 237)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(232, 234, 237)",
+        "vars": {
+          "--ha-color-form-background": "#23262D",
+          "--ha-color-form-background-disabled": "#1D2026",
+          "--ha-color-on-neutral-normal": "#E8EAED",
+          "--ha-color-border-neutral-loud": "#3A404A",
+          "--wa-color-surface-raised": "#23262D",
+          "--wa-color-surface-border": "#3A404A",
+          "--wa-color-text-normal": "#E8EAED",
+          "--wa-color-text-quiet": "#A7AFB8",
+          "--mdc-select-fill-color": "#23262D",
+          "--mdc-select-ink-color": "#E8EAED",
+          "--md-filled-select-text-field-container-color": "#23262D",
+          "--md-filled-select-text-field-input-text-color": "#E8EAED"
+        }
+      },
+      "pickerField": {
+        "tag": "ha-picker-field",
+        "text": "",
+        "color": "rgb(232, 234, 237)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(232, 234, 237)",
+        "vars": {
+          "--ha-color-form-background": "#23262D",
+          "--ha-color-form-background-disabled": "#1D2026",
+          "--ha-color-on-neutral-normal": "#E8EAED",
+          "--ha-color-border-neutral-loud": "#3A404A",
+          "--wa-color-surface-raised": "#23262D",
+          "--wa-color-surface-border": "#3A404A",
+          "--wa-color-text-normal": "#E8EAED",
+          "--wa-color-text-quiet": "#A7AFB8",
+          "--mdc-select-fill-color": "#23262D",
+          "--mdc-select-ink-color": "#E8EAED",
+          "--md-filled-select-text-field-container-color": "#23262D",
+          "--md-filled-select-text-field-input-text-color": "#E8EAED"
+        }
+      },
+      "dropdown": {
+        "tag": "ha-dropdown",
+        "text": "Use default theme        Home Assistant        Catppuccin Auto Latte Frappe        Catppuccin Auto Latte Macchiato      ",
+        "color": "rgb(232, 234, 237)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(232, 234, 237)",
+        "vars": {
+          "--ha-color-form-background": "#23262D",
+          "--ha-color-form-background-disabled": "#1D2026",
+          "--ha-color-on-neutral-normal": "#E8EAED",
+          "--ha-color-border-neutral-loud": "#3A404A",
+          "--wa-color-surface-raised": "#23262D",
+          "--wa-color-surface-border": "#3A404A",
+          "--wa-color-text-normal": "#E8EAED",
+          "--wa-color-text-quiet": "#A7AFB8",
+          "--mdc-select-fill-color": "#23262D",
+          "--mdc-select-ink-color": "#E8EAED",
+          "--md-filled-select-text-field-container-color": "#23262D",
+          "--md-filled-select-text-field-input-text-color": "#E8EAED"
+        }
+      },
+      "dropdownItem": {
+        "tag": "ha-dropdown-item",
+        "text": "Use default theme",
+        "color": "rgb(232, 234, 237)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(232, 234, 237)",
+        "vars": {
+          "--ha-color-form-background": "#23262D",
+          "--ha-color-form-background-disabled": "#1D2026",
+          "--ha-color-on-neutral-normal": "#E8EAED",
+          "--ha-color-border-neutral-loud": "#3A404A",
+          "--wa-color-surface-raised": "#23262D",
+          "--wa-color-surface-border": "#3A404A",
+          "--wa-color-text-normal": "#E8EAED",
+          "--wa-color-text-quiet": "#A7AFB8",
+          "--mdc-select-fill-color": "#23262D",
+          "--mdc-select-ink-color": "#E8EAED",
+          "--md-filled-select-text-field-container-color": "#23262D",
+          "--md-filled-select-text-field-input-text-color": "#E8EAED"
+        }
+      },
+      "contrast": {
+        "document:--ha-color-form-background/--ha-color-on-neutral-normal": 12.565369243295569,
+        "document:--wa-color-surface-raised/--wa-color-text-normal": 12.565369243295569,
+        "document:--wa-color-surface-raised/--wa-color-text-quiet": 6.827641399046389,
+        "select:--mdc-select-fill-color/--mdc-select-ink-color": 12.565369243295569,
+        "select:--md-filled-select-text-field-container-color/--md-filled-select-text-field-input-text-color": 12.565369243295569
+      },
+      "screenshot": "assets/screenshots/native-controls-yeelight-classic-dark.png"
+    },
+    {
+      "theme": "Yeelight Minimal",
+      "dark": true,
+      "url": "http://localhost:18124/profile/general",
+      "activeTheme": "Yeelight Minimal",
+      "selectedTheme": {
+        "theme": "Yeelight Minimal",
+        "dark": true
+      },
+      "counts": {
+        "select": 7,
+        "pickerField": 8,
+        "dropdown": 7,
+        "dropdownItem": 62
+      },
+      "document": {
+        "tag": "html",
+        "text": "Profile – Home Assistantbody{font-family:Roboto,Noto,sans-serif;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing",
+        "color": "rgb(242, 240, 234)",
+        "backgroundColor": "rgb(18, 20, 22)",
+        "borderColor": "rgb(242, 240, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E22",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F2F0EA",
+          "--ha-color-border-neutral-loud": "#3B4048",
+          "--wa-color-surface-raised": "#1B1E22",
+          "--wa-color-surface-border": "#3B4048",
+          "--wa-color-text-normal": "#F2F0EA",
+          "--wa-color-text-quiet": "#B6B1A8",
+          "--mdc-select-fill-color": "#1B1E22",
+          "--mdc-select-ink-color": "#F2F0EA",
+          "--md-filled-select-text-field-container-color": "#1B1E22",
+          "--md-filled-select-text-field-input-text-color": "#F2F0EA"
+        }
+      },
+      "select": {
+        "tag": "ha-select",
+        "text": "",
+        "color": "rgb(242, 240, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(242, 240, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E22",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F2F0EA",
+          "--ha-color-border-neutral-loud": "#3B4048",
+          "--wa-color-surface-raised": "#1B1E22",
+          "--wa-color-surface-border": "#3B4048",
+          "--wa-color-text-normal": "#F2F0EA",
+          "--wa-color-text-quiet": "#B6B1A8",
+          "--mdc-select-fill-color": "#1B1E22",
+          "--mdc-select-ink-color": "#F2F0EA",
+          "--md-filled-select-text-field-container-color": "#1B1E22",
+          "--md-filled-select-text-field-input-text-color": "#F2F0EA"
+        }
+      },
+      "pickerField": {
+        "tag": "ha-picker-field",
+        "text": "",
+        "color": "rgb(242, 240, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(242, 240, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E22",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F2F0EA",
+          "--ha-color-border-neutral-loud": "#3B4048",
+          "--wa-color-surface-raised": "#1B1E22",
+          "--wa-color-surface-border": "#3B4048",
+          "--wa-color-text-normal": "#F2F0EA",
+          "--wa-color-text-quiet": "#B6B1A8",
+          "--mdc-select-fill-color": "#1B1E22",
+          "--mdc-select-ink-color": "#F2F0EA",
+          "--md-filled-select-text-field-container-color": "#1B1E22",
+          "--md-filled-select-text-field-input-text-color": "#F2F0EA"
+        }
+      },
+      "dropdown": {
+        "tag": "ha-dropdown",
+        "text": "Use default theme        Home Assistant        Catppuccin Auto Latte Frappe        Catppuccin Auto Latte Macchiato      ",
+        "color": "rgb(242, 240, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(242, 240, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E22",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F2F0EA",
+          "--ha-color-border-neutral-loud": "#3B4048",
+          "--wa-color-surface-raised": "#1B1E22",
+          "--wa-color-surface-border": "#3B4048",
+          "--wa-color-text-normal": "#F2F0EA",
+          "--wa-color-text-quiet": "#B6B1A8",
+          "--mdc-select-fill-color": "#1B1E22",
+          "--mdc-select-ink-color": "#F2F0EA",
+          "--md-filled-select-text-field-container-color": "#1B1E22",
+          "--md-filled-select-text-field-input-text-color": "#F2F0EA"
+        }
+      },
+      "dropdownItem": {
+        "tag": "ha-dropdown-item",
+        "text": "Use default theme",
+        "color": "rgb(242, 240, 234)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderColor": "rgb(242, 240, 234)",
+        "vars": {
+          "--ha-color-form-background": "#1B1E22",
+          "--ha-color-form-background-disabled": "#16191F",
+          "--ha-color-on-neutral-normal": "#F2F0EA",
+          "--ha-color-border-neutral-loud": "#3B4048",
+          "--wa-color-surface-raised": "#1B1E22",
+          "--wa-color-surface-border": "#3B4048",
+          "--wa-color-text-normal": "#F2F0EA",
+          "--wa-color-text-quiet": "#B6B1A8",
+          "--mdc-select-fill-color": "#1B1E22",
+          "--mdc-select-ink-color": "#F2F0EA",
+          "--md-filled-select-text-field-container-color": "#1B1E22",
+          "--md-filled-select-text-field-input-text-color": "#F2F0EA"
+        }
+      },
+      "contrast": {
+        "document:--ha-color-form-background/--ha-color-on-neutral-normal": 14.678537811905342,
+        "document:--wa-color-surface-raised/--wa-color-text-normal": 14.678537811905342,
+        "document:--wa-color-surface-raised/--wa-color-text-quiet": 7.840706637373871,
+        "select:--mdc-select-fill-color/--mdc-select-ink-color": 14.678537811905342,
+        "select:--md-filled-select-text-field-container-color/--md-filled-select-text-field-input-text-color": 14.678537811905342
+      },
+      "screenshot": "assets/screenshots/native-controls-yeelight-minimal.png"
+    }
+  ]
+}

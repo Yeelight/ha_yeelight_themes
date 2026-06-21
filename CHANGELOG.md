@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-06-21
+
+### Added
+- Real Home Assistant native-control screenshots for the dark theme cases.
+- Playwright validation for HA profile select/dropdown controls, including `Yeelight Minimal` with `dark: true`.
+
+### Changed
+- Dark theme palettes now cover current Home Assistant form, picker, select, dropdown, text field, and list tokens.
+- Release validation now checks native-control evidence, contrast ratios, and the `Yeelight Minimal` dark-mode report.
+- README files document the native-control validation command and evidence report.
+
 ## [1.0.1] - 2026-06-18
 
 ### Added

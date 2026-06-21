@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -8,9 +8,15 @@ import { chromium } from "playwright";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT_DIR = join(ROOT, "assets/screenshots");
 const REPORT_FILE = join(OUTPUT_DIR, "ha-theme-screenshots.json");
+const THEME_FILE = join(ROOT, "themes/yeelight.yaml");
 const HA_URL = (process.env.HA_URL || "http://localhost:18124").replace(/\/$/, "");
 const HA_USERNAME = process.env.HA_USERNAME;
 const HA_PASSWORD = process.env.HA_PASSWORD;
+const DEFAULT_HA_CONFIG_DIR = HA_URL.includes(":18124")
+  ? resolve(ROOT, "../../../../config/homeassistant-verify")
+  : resolve(ROOT, "../../../../config/homeassistant");
+const HA_CONFIG_DIR = process.env.HA_CONFIG_DIR || DEFAULT_HA_CONFIG_DIR;
+const HA_RUNTIME_THEME_FILE = process.env.HA_RUNTIME_THEME_FILE || join(HA_CONFIG_DIR, "themes/yeelight.yaml");
 const HEADLESS = process.env.HEADLESS !== "0";
 const DASHBOARD_PATH = process.env.HA_DASHBOARD_PATH || "/home/overview";
 const WAIT_TIMEOUT = Number(process.env.HA_SCREENSHOT_TIMEOUT || 60_000);
@@ -27,10 +33,26 @@ function fail(message) {
   throw new Error(message);
 }
 
+async function syncThemeFile() {
+  await mkdir(dirname(HA_RUNTIME_THEME_FILE), { recursive: true });
+  await copyFile(THEME_FILE, HA_RUNTIME_THEME_FILE);
+}
+
 async function waitForHomeAssistant(page) {
   await page.waitForFunction(
     () => Boolean(document.querySelector("home-assistant")?.hass),
     null,
+    { timeout: WAIT_TIMEOUT }
+  );
+}
+
+async function waitForTheme(page, themeName) {
+  await page.waitForFunction(
+    (name) => {
+      const hass = document.querySelector("home-assistant")?.hass;
+      return hass?.themes?.theme === name && hass?.selectedTheme?.theme === name;
+    },
+    themeName,
     { timeout: WAIT_TIMEOUT }
   );
 }
@@ -143,6 +165,7 @@ async function setTheme(page, themeName) {
     if (!hass) {
       throw new Error("Home Assistant frontend object is not available.");
     }
+    await hass.callService("frontend", "reload_themes");
     await hass.connection.sendMessagePromise({
       type: "frontend/set_user_data",
       key: "theme",
@@ -159,6 +182,7 @@ async function setTheme(page, themeName) {
     const body = await page.locator("body").evaluate((element) => element.innerText).catch(() => "");
     fail(`Home Assistant did not finish loading after applying ${themeName}. url=${page.url()} body=${body.slice(0, 400)} error=${error.message}`);
   }
+  await waitForTheme(page, themeName);
   await page.waitForTimeout(2_000);
 }
 
@@ -193,6 +217,7 @@ async function sampleTheme(page, themeName) {
 
 async function main() {
   await mkdir(OUTPUT_DIR, { recursive: true });
+  await syncThemeFile();
   const browser = await chromium.launch({ headless: HEADLESS });
   const page = await browser.newPage({ viewport: { width: 1440, height: 960 }, deviceScaleFactor: 1 });
   const report = [];

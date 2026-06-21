@@ -13,6 +13,7 @@ const README_FILE = join(ROOT, "README.md");
 const README_ZH_FILE = join(ROOT, "README_zh.md");
 const SCREENSHOTS_DIR = join(ROOT, "assets/screenshots");
 const SCREENSHOT_REPORT_FILE = join(SCREENSHOTS_DIR, "ha-theme-screenshots.json");
+const NATIVE_CONTROL_REPORT_FILE = join(SCREENSHOTS_DIR, "ha-native-controls.json");
 const HACS_PR_BODY_FILE = join(ROOT, "docs/hacs-default-pr-body.md");
 const HACS_SUBMISSION_DOC_FILE = join(ROOT, "docs/hacs-default-submission.md");
 const DOCKERFILE = join(WORKSPACE_ROOT, "Dockerfile");
@@ -40,6 +41,12 @@ const REQUIRED_SCREENSHOTS = [
   ["Yeelight Classic Dark", "assets/screenshots/yeelight-classic-dark.png"],
   ["Yeelight Minimal", "assets/screenshots/yeelight-minimal.png"],
 ];
+const REQUIRED_NATIVE_CONTROL_SCREENSHOTS = [
+  { theme: "Yeelight Dark", screenshot: "assets/screenshots/native-controls-yeelight-dark.png" },
+  { theme: "Yeelight Panel", screenshot: "assets/screenshots/native-controls-yeelight-panel.png" },
+  { theme: "Yeelight Classic Dark", screenshot: "assets/screenshots/native-controls-yeelight-classic-dark.png" },
+  { theme: "Yeelight Minimal", screenshot: "assets/screenshots/native-controls-yeelight-minimal.png", dark: true },
+];
 const REQUIRED_TOKENS = [
   "primary-color",
   "accent-color",
@@ -66,6 +73,61 @@ const REQUIRED_TOKENS = [
   "mdc-theme-secondary",
   "mdc-theme-surface",
   "mdc-theme-on-primary",
+  "mdc-theme-on-surface",
+  "md-sys-color-primary",
+  "md-sys-color-on-primary",
+  "md-sys-color-surface",
+  "md-sys-color-surface-container",
+  "md-sys-color-surface-container-highest",
+  "md-sys-color-on-surface",
+  "md-sys-color-on-surface-variant",
+  "md-sys-color-outline",
+  "ha-color-form-background",
+  "ha-color-form-background-disabled",
+  "ha-color-border-neutral-loud",
+  "ha-color-on-neutral-normal",
+  "ha-color-fill-primary-quiet-resting",
+  "ha-color-fill-primary-quiet-hover",
+  "ha-dialog-surface-background",
+  "wa-color-surface-raised",
+  "wa-color-surface-border",
+  "wa-color-text-normal",
+  "wa-color-text-quiet",
+  "wa-color-neutral-fill-normal",
+  "wa-color-neutral-on-quiet",
+  "wa-color-danger-on-quiet",
+  "wa-color-danger-fill-normal",
+  "wa-color-danger-on-normal",
+  "mdc-select-fill-color",
+  "mdc-select-ink-color",
+  "mdc-select-label-ink-color",
+  "mdc-select-dropdown-icon-color",
+  "mdc-select-idle-line-color",
+  "mdc-select-hover-line-color",
+  "mdc-text-field-fill-color",
+  "mdc-text-field-ink-color",
+  "mdc-text-field-label-ink-color",
+  "mdc-text-field-disabled-fill-color",
+  "md-filled-select-text-field-container-color",
+  "md-filled-select-text-field-input-text-color",
+  "md-filled-select-text-field-label-text-color",
+  "md-filled-select-text-field-trailing-icon-color",
+  "md-filled-text-field-container-color",
+  "md-filled-text-field-input-text-color",
+  "md-filled-text-field-label-text-color",
+  "md-filled-text-field-trailing-icon-color",
+  "ha-select-background",
+  "ha-select-text-color",
+  "ha-select-label-color",
+  "ha-select-dropdown-icon-color",
+  "ha-picker-field-background-color",
+  "ha-picker-field-input-color",
+  "ha-picker-field-label-color",
+  "ha-picker-field-icon-color",
+  "mdc-menu-surface-fill-color",
+  "mdc-menu-item-ink-color",
+  "mdc-list-item-primary-text-color",
+  "mdc-list-item-secondary-text-color",
   "input-fill-color",
   "input-ink-color",
   "input-label-ink-color",
@@ -108,6 +170,34 @@ const REQUIRED_TOKENS = [
   "yl-scene-warm-color",
 ];
 
+const CONTROL_CONTRAST_CHECKS = [
+  ["input-fill-color", "input-ink-color", 4.5],
+  ["input-fill-color", "input-label-ink-color", 3],
+  ["mdc-select-fill-color", "mdc-select-ink-color", 4.5],
+  ["mdc-select-fill-color", "mdc-select-label-ink-color", 3],
+  ["mdc-select-fill-color", "mdc-select-dropdown-icon-color", 3],
+  ["mdc-text-field-fill-color", "mdc-text-field-ink-color", 4.5],
+  ["mdc-text-field-fill-color", "mdc-text-field-label-ink-color", 3],
+  ["md-filled-select-text-field-container-color", "md-filled-select-text-field-input-text-color", 4.5],
+  ["md-filled-select-text-field-container-color", "md-filled-select-text-field-label-text-color", 3],
+  ["md-filled-select-text-field-container-color", "md-filled-select-text-field-trailing-icon-color", 3],
+  ["md-filled-text-field-container-color", "md-filled-text-field-input-text-color", 4.5],
+  ["md-filled-text-field-container-color", "md-filled-text-field-label-text-color", 3],
+  ["ha-color-form-background", "ha-color-on-neutral-normal", 4.5],
+  ["ha-picker-field-background-color", "ha-picker-field-input-color", 4.5],
+  ["ha-picker-field-background-color", "ha-picker-field-label-color", 3],
+  ["ha-picker-field-background-color", "ha-picker-field-icon-color", 3],
+  ["wa-color-surface-raised", "wa-color-text-normal", 4.5],
+  ["wa-color-surface-raised", "wa-color-text-quiet", 3],
+  ["mdc-menu-surface-fill-color", "mdc-menu-item-ink-color", 4.5],
+  ["mdc-menu-surface-fill-color", "mdc-list-item-primary-text-color", 4.5],
+  ["mdc-menu-surface-fill-color", "mdc-list-item-secondary-text-color", 3],
+  ["md-sys-color-surface-container-highest", "md-sys-color-on-surface", 4.5],
+  ["md-sys-color-surface-container-highest", "md-sys-color-on-surface-variant", 3],
+  ["primary-color", "mdc-theme-on-primary", 4.5],
+  ["md-sys-color-primary", "md-sys-color-on-primary", 4.5],
+];
+
 function fail(message) {
   throw new Error(message);
 }
@@ -117,6 +207,72 @@ function readText(file) {
     fail(`Missing file: ${file}`);
   }
   return readFileSync(file, "utf8");
+}
+
+function parseYamlScalar(value) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "";
+  }
+  const withoutComment = trimmed.replace(/\s+#.*$/, "");
+  const doubleQuoted = withoutComment.match(/^"([^"]*)"\s*$/);
+  if (doubleQuoted) {
+    return doubleQuoted[1];
+  }
+  const singleQuoted = withoutComment.match(/^'([^']*)'\s*$/);
+  if (singleQuoted) {
+    return singleQuoted[1];
+  }
+  return withoutComment.trim();
+}
+
+function parseCssColor(value) {
+  const color = parseYamlScalar(value || "");
+  let match = color.match(/^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i);
+  if (match) {
+    let hex = match[1];
+    if (hex.length === 3) {
+      hex = hex
+        .split("")
+        .map((part) => `${part}${part}`)
+        .join("");
+    }
+    return {
+      r: parseInt(hex.slice(0, 2), 16),
+      g: parseInt(hex.slice(2, 4), 16),
+      b: parseInt(hex.slice(4, 6), 16),
+    };
+  }
+
+  match = color.match(/^rgba?\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)(?:\s*,\s*([0-9.]+))?\s*\)$/i);
+  if (match) {
+    return {
+      r: Number(match[1]),
+      g: Number(match[2]),
+      b: Number(match[3]),
+    };
+  }
+
+  return null;
+}
+
+function relativeLuminance({ r, g, b }) {
+  const normalize = (channel) => {
+    const value = channel / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * normalize(r) + 0.7152 * normalize(g) + 0.0722 * normalize(b);
+}
+
+function contrastRatio(background, foreground) {
+  const bg = parseCssColor(background);
+  const fg = parseCssColor(foreground);
+  if (!bg || !fg) {
+    return null;
+  }
+  const bgLum = relativeLuminance(bg);
+  const fgLum = relativeLuminance(fg);
+  return (Math.max(bgLum, fgLum) + 0.05) / (Math.min(bgLum, fgLum) + 0.05);
 }
 
 function parseThemeKeys(yaml) {
@@ -134,7 +290,9 @@ function parseThemeKeys(yaml) {
     if (top) {
       currentTheme = {
         keys: new Set(),
+        values: new Map(),
         modes: new Map(),
+        modeValues: new Map(),
         mergeAnchors: [],
         modeMergeAnchors: new Map(),
       };
@@ -154,6 +312,7 @@ function parseThemeKeys(yaml) {
     if (mode) {
       currentMode = mode[1];
       currentTheme.modes.set(currentMode, new Set());
+      currentTheme.modeValues.set(currentMode, new Map());
       currentTheme.modeMergeAnchors.set(currentMode, []);
       continue;
     }
@@ -168,15 +327,17 @@ function parseThemeKeys(yaml) {
       continue;
     }
 
-    const modeKey = rawLine.match(/^      ([A-Za-z0-9_-]+):/);
+    const modeKey = rawLine.match(/^      ([A-Za-z0-9_-]+):\s*(.*)$/);
     if (currentMode && modeKey) {
       currentTheme.modes.get(currentMode).add(modeKey[1]);
+      currentTheme.modeValues.get(currentMode).set(modeKey[1], parseYamlScalar(modeKey[2]));
       continue;
     }
 
-    const key = rawLine.match(/^  ([A-Za-z0-9_-]+):/);
+    const key = rawLine.match(/^  ([A-Za-z0-9_-]+):\s*(.*)$/);
     if (key && key[1] !== "modes") {
       currentTheme.keys.add(key[1]);
+      currentTheme.values.set(key[1], parseYamlScalar(key[2]));
     }
   }
 
@@ -271,19 +432,45 @@ function assertThemeTokens() {
             if (!modeTokens) {
               fail("Yeelight Minimal must define both modes.light and modes.dark.");
             }
-            return { label: `${name} ${mode}`, tokens: new Set([...theme.keys, ...modeTokens]) };
+            return {
+              label: `${name} ${mode}`,
+              tokens: new Set([...theme.keys, ...modeTokens]),
+              values: new Map([...theme.values, ...(theme.modeValues.get(mode) || new Map())]),
+            };
           })
-        : [{ label: name, tokens: theme.keys }];
+        : [{ label: name, tokens: theme.keys, values: theme.values }];
 
     if (name === "Yeelight Minimal" && theme.modes.get("dark").size < 20) {
       fail("Yeelight Minimal modes.dark must override the light baseline with a real dark palette.");
     }
 
-    for (const { label, tokens } of tokenSets) {
+    for (const { label, tokens, values } of tokenSets) {
       const missing = REQUIRED_TOKENS.filter((token) => !tokens.has(token));
       if (missing.length > 0) {
         fail(`${label} is missing required tokens: ${missing.join(", ")}`);
       }
+      assertControlContrast(label, tokens, values);
+    }
+  }
+}
+
+function assertControlContrast(label, tokens, values) {
+  for (const [backgroundToken, foregroundToken, minimum] of CONTROL_CONTRAST_CHECKS) {
+    if (!tokens.has(backgroundToken) || !tokens.has(foregroundToken)) {
+      fail(`${label} cannot check contrast because ${backgroundToken} or ${foregroundToken} is missing.`);
+    }
+
+    const background = values.get(backgroundToken);
+    const foreground = values.get(foregroundToken);
+    const ratio = contrastRatio(background, foreground);
+    if (ratio === null) {
+      fail(`${label} has non-static colors for ${backgroundToken}/${foregroundToken}: ${background} / ${foreground}`);
+    }
+    if (ratio < minimum) {
+      fail(
+        `${label} contrast ${backgroundToken} vs ${foregroundToken} is ${ratio.toFixed(2)}, ` +
+          `expected at least ${minimum}. Values: ${background} / ${foreground}`
+      );
     }
   }
 }
@@ -362,6 +549,48 @@ function assertScreenshotEvidence() {
   }
 }
 
+function assertNativeControlEvidence() {
+  const report = JSON.parse(readText(NATIVE_CONTROL_REPORT_FILE));
+  const capturedThemes = new Map((report.themes || []).map((theme) => [theme.theme, theme]));
+
+  for (const { theme, screenshot, dark } of REQUIRED_NATIVE_CONTROL_SCREENSHOTS) {
+    const file = join(ROOT, screenshot);
+    if (!existsSync(file)) {
+      fail(`Missing native HA control screenshot for ${theme}: ${screenshot}`);
+    }
+    const size = statSync(file).size;
+    if (size < 20_000) {
+      fail(`Native control screenshot for ${theme} is unexpectedly small: ${screenshot}`);
+    }
+
+    const entry = capturedThemes.get(theme);
+    if (!entry) {
+      fail(`Native control report must include ${theme}.`);
+    }
+    if (entry.screenshot !== screenshot) {
+      fail(`Native control report path mismatch for ${theme}: ${entry.screenshot}`);
+    }
+    if (entry.activeTheme !== theme || entry.selectedTheme?.theme !== theme) {
+      fail(`Native control report must confirm ${theme} was the active HA theme.`);
+    }
+    if (dark !== undefined && entry.selectedTheme?.dark !== dark) {
+      fail(`Native control report must confirm ${theme} dark=${dark}.`);
+    }
+    if (entry.counts?.select < 1 || entry.counts?.pickerField < 1 || entry.counts?.dropdownItem < 1) {
+      fail(`Native control report for ${theme} must include select, picker field, and dropdown item samples.`);
+    }
+    const contrastEntries = Object.entries(entry.contrast || {});
+    if (contrastEntries.length < 5) {
+      fail(`Native control report for ${theme} must include all native control contrast samples.`);
+    }
+    for (const [key, ratio] of contrastEntries) {
+      if (typeof ratio !== "number" || ratio < 4.5) {
+        fail(`Native control report for ${theme} has low contrast ${key}: ${ratio}`);
+      }
+    }
+  }
+}
+
 function assertHacsSubmissionDocs() {
   const body = readText(HACS_PR_BODY_FILE);
   const docs = readText(HACS_SUBMISSION_DOC_FILE);
@@ -372,8 +601,11 @@ function assertHacsSubmissionDocs() {
   if (!body.includes("## Checklist") || !body.includes("## Links")) {
     fail("HACS PR body template must keep the upstream Checklist and Links sections.");
   }
-  if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("actions/runs/27744600672") || !body.includes("releases/tag/v1.0.1")) {
+  if (!body.includes("hacs.xyz/docs/publish/action") || !body.includes("releases/tag/v1.0.2")) {
     fail("HACS PR body template must include validation action and release links.");
+  }
+  if (!/actions\/runs\/(\d+|TODO)>/.test(body)) {
+    fail("HACS PR body template must include a successful HACS action run link or TODO while preparing the next release.");
   }
   if (!body.includes("- [ ] (For integrations only) I've added the [hassfest action]")) {
     fail("HACS PR body template must leave the integration-only hassfest checklist item unchecked for a theme repository.");
@@ -488,6 +720,7 @@ assertNoYamlMergeKeys();
 assertThemeTokens();
 assertDocs();
 assertScreenshotEvidence();
+assertNativeControlEvidence();
 assertHacsSubmissionDocs();
 
 if (canValidateWorkspaceIntegration()) {

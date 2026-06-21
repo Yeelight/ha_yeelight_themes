@@ -78,7 +78,7 @@ Each theme defines standard HA variables before Yeelight-specific variables:
 | --- | --- |
 | Core palette | `primary-color`, `accent-color`, `dark-primary-color`, `light-primary-color` |
 | Surfaces | `primary-background-color`, `secondary-background-color`, `card-background-color`, `ha-card-background` |
-| Native controls | `mdc-theme-primary`, `input-fill-color`, `switch-checked-color`, `slider-color`, `paper-item-icon-color` |
+| Native controls | `ha-color-form-background`, `wa-color-surface-raised`, `mdc-select-fill-color`, `md-filled-select-text-field-container-color`, `input-fill-color` |
 | Entity states | `state-light-active-color`, `state-switch-active-color`, `state-lock-locked-color`, `state-alarm_control_panel-armed_away-color` |
 | Feedback | `success-color`, `warning-color`, `error-color`, `info-color` |
 | Yeelight cards | `yl-accent`, `yl-surface`, `yl-text`, `yl-muted`, `yl-radius-card`, `yl-card-shadow`, `yl-hero-glow-color` |
@@ -100,6 +100,14 @@ HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run 
 ```
 
 The screenshot script saves each theme through Home Assistant's `frontend/set_user_data` API, reloads the dashboard, checks the active theme and CSS variables, and writes `assets/screenshots/ha-theme-screenshots.json`.
+
+To validate Home Assistant native controls on the user preferences page:
+
+```bash
+HA_URL=http://localhost:18124 HA_USERNAME=<user> HA_PASSWORD=<password> npm run validate:ha-controls
+```
+
+The native-control validation syncs `themes/yeelight.yaml` to the local HA runtime theme file, calls `frontend.reload_themes`, applies the Yeelight dark theme cases, including `Yeelight Minimal` with `dark: true`, captures `/profile/general`, and checks select/dropdown form contrast in `assets/screenshots/ha-native-controls.json`.
 
 ## Customization
 

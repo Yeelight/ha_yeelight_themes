@@ -20,7 +20,7 @@ const DOCKERFILE = join(WORKSPACE_ROOT, "Dockerfile");
 const CONFIGURATION_FILE = join(WORKSPACE_ROOT, "config/configuration.yaml");
 const ENTRYPOINT_FILE = join(WORKSPACE_ROOT, "scripts/docker-entrypoint.sh");
 const RUN_SH_FILE = join(WORKSPACE_ROOT, "run.sh");
-const THEME_MIGRATION_FILE = join(WORKSPACE_ROOT, "config/www/yeelight/theme-migration.js");
+const THEME_MIGRATION_FILE = join(WORKSPACE_ROOT, "config/www/yeelight-theme-migration.js");
 const CONFIG_THEMES_DIR = join(WORKSPACE_ROOT, "config/themes");
 const YEELIGHT_UI_PACKAGE = join(WORKSPACE_ROOT, "config/packages/yeelight_ui.yaml");
 const LUCORE_UI_PACKAGE = join(WORKSPACE_ROOT, "config/packages/lucore_ui.yaml");
@@ -661,7 +661,7 @@ function assertDistributionIntegration() {
   if (!runSh.includes("/opt/lucore-homeassistant/yeelight-themes:ro")) {
     fail("run.sh --dev-mount must mount the Yeelight theme package source.");
   }
-  if (!configuration.includes("/local/yeelight/theme-migration.js")) {
+  if (!configuration.includes("/local/yeelight-theme-migration.js")) {
     fail("configuration.yaml must load the Yeelight theme migration frontend module.");
   }
   for (const [legacyName, themeName] of Object.entries({
